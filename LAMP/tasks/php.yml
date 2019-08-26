@@ -1,0 +1,21 @@
+- name: Install the packages PHP
+#  apt: name= "{{packages}}"
+  apt: name=php=1:7.0+35ubuntu6.1
+       state=present
+  when: ansible_distribution_release == 'xenial'
+#  vars:
+#    packages:
+#       - php
+#       - libapache2-mod-php
+  notify:
+  -  restart Apache
+- name: Install add packages
+  apt: name=libapache2-mod-php
+       state=present
+#- name: Copy config PHP on machine
+#  template:
+#    src: "templates/{{item}}.j2"
+#    dest: "/{{item}}"
+#  with_items:
+#  - "etc/php/7.0/fpm/php-fpm.conf"
+#  when: ansible_distribution_release == 'xenial'

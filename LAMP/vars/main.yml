@@ -1,0 +1,19 @@
+apache_Timeout: 300
+apache_MaxKeepAliveRequests: 100
+apache_KeepAliveTimeout: 5
+apache_LogLevel: warn
+
+mysql_user: mysql
+mysql_port: 3306
+mysql_key_buffer_size: 16M
+mysql_max_allowed_packet: 16M
+mysql_thread_stack: 192K
+mysql_thread_cache_size: 8
+mysql_myisam_recover_options: BACKUP
+mysql_query_cache_limit: 1M
+mysql_query_cache_size: 16M
+mysql_error_log_path: /var/log/mysql/error.log
+mysql_expire_logs_days: 10
+mysql_max_binlog_size: 100M
+
+php_var1: 1

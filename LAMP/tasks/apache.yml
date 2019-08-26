@@ -1,0 +1,16 @@
+- name: Update cache
+  apt: update_cache=yes
+  when: ansible_distribution_release == 'xenial'
+- name: Install the package Apache
+  apt: name=apache2
+       state=present
+  when: ansible_distribution_release == 'xenial'
+- name: Copy config Apache on machine 
+  template:
+    src: "templates/{{item}}.j2"
+    dest: "/{{item}}"
+  with_items:
+  - "etc/apache2/apache2.conf"
+  notify:
+  - restart Apache
+  when: ansible_distribution_release == 'xenial'

@@ -1,0 +1,18 @@
+- name: Copy test PHP file
+  copy:
+    src: files/info.php
+    dest: /var/www/html/info.php
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_distribution_release == 'xenial'
+- name: Copy test mysql file
+  copy:
+    src: files/test.php
+    dest: /var/www/html/test.php
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+  - restart Apache
+  when: ansible_distribution_release == 'xenial'

@@ -1,0 +1,13 @@
+- name: Install the packages Mysql
+  apt: name=mysql-server
+       state=present
+  when: ansible_distribution_release == 'xenial'
+- name: Copy config Mysql on machine
+  template:
+    src: "templates/{{item}}.j2"
+    dest: "/{{item}}"
+  with_items:
+  - "etc/mysql/mysql.conf.d/mysqld.cnf"
+  notify:
+  - restart mysql
+  when: ansible_distribution_release == 'xenial'
